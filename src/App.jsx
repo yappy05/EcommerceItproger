@@ -1,0 +1,68 @@
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import React from "react";
+import Items from "./components/Items.jsx";
+
+
+
+class App extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [
+                {
+                    id: 1,
+                    title: "Диван Комфорт",
+                    img: "./img/sofa.jpg",
+                    description: "Удобный трехместный диван с обивкой из экокожи. Раскладывается в двуспальную кровать.",
+                    category: "sofas",
+                    price: 45000
+                },
+                {
+                    id: 2,
+                    title: "Кресло Уют",
+                    img: "./img/armchair.jpeg",
+                    description: "Мягкое кресло с высокой спинкой и подлокотниками. Идеально для чтения и отдыха.",
+                    category: "chairs",
+                    price: 15000
+                },
+                {
+                    id: 3,
+                    title: "Стол Модерн",
+                    img: "./img/table.jpg",
+                    description: "Обеденный стол из массива дуба на 6 персон. Современный дизайн.",
+                    category: "tables",
+                    price: 28000
+                },
+                {
+                    id: 4,
+                    title: "Шкаф Классик",
+                    img: "./img/cupboard.jpeg",
+                    description: "Трехстворчатый шкаф с зеркалом и отделением для одежды. Классический дизайн.",
+                    category: "wardrobes",
+                    price: 35000
+                },
+                {
+                    id: 5,
+                    title: "Кровать Люкс",
+                    img: "./img/bed.jpeg",
+                    description: "Двуспальная кровать с мягким изголовьем и ортопедическим основанием.",
+                    category: "beds",
+                    price: 42000
+                }
+            ]
+        }
+    }
+
+    render() {
+        return (
+            <div className="wrapper">
+                <Header/>
+                <Items items={this.state.items}/>
+                <Footer/>
+            </div>
+        );
+    }
+}
+export default App
