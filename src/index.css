@@ -11,6 +11,9 @@ body{
     color: #222;
     font-weight: 300;
 }
+header{
+    position: relative;
+}
 .wrapper{
     width: 1280px;
     margin: 50px auto;
@@ -70,6 +73,35 @@ header ul.nav li{
 header ul.nav li:hover{
     opacity: 0.5;
 }
+header .add-to-cart:hover
+{
+    transform: scale(1.1) translate(-5px);
+}
+
+header .shop-cart-button
+{
+    float: right;
+    cursor: pointer;
+    transition: color, transform 0.5s ease;
+}
+header .shop-cart-button:hover,
+header .shop-cart-button.active
+{
+    color: #dc3d3d;
+    transform: scale(1.5);
+}
+header .shop-cart{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 450px;
+    min-height: 100px;
+    background: #fafafa;
+    -webkit-box-shadow: 0px 6px 15px 0px rgba(34, 60, 80, 0.5);
+    -moz-box-shadow: 0px 6px 15px 0px rgba(34, 60, 80, 0.5);
+    box-shadow: 0px 6px 15px 0px rgba(34, 60, 80, 0.5);
+    z-index: 1;
+}
 
 main{
     display: flex;
@@ -122,6 +154,3 @@ main .add-to-cart{
     transition: transform 0.5s ease;
 }
 
-main .add-to-cart:hover{
-    transform: scale(1.1) translate(-5px);
-}
