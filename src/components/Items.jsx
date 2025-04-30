@@ -6,7 +6,7 @@ class Items extends Component {
         return (
             <main>
                 {this.props.items.map(el => (
-                    <Item item={el} key={el.id}/>
+                    <Item item={el} key={el.id} onAdd={this.props.onAdd}/>
                 ))}
             </main>
         );

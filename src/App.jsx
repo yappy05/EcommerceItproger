@@ -61,10 +61,14 @@ class App extends React.Component{
         return (
             <div className="wrapper">
                 <Header/>
-                <Items items={this.state.items}/>
+                <Items items={this.state.items} onAdd={this.addToOrder}/>
                 <Footer/>
             </div>
         );
+    }
+    addToOrder(item){
+        this.setState({orders: [...this.state.orders, item]});
+        console.log(this.state.orders.map(el => console.log(el)));
     }
 
 }
