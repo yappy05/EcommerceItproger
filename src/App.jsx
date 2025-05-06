@@ -2,6 +2,8 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import React from "react";
 import Items from "./components/Items.jsx";
+import Category from "./components/Category.jsx";
+
 
 
 
@@ -11,13 +13,14 @@ class App extends React.Component{
         super(props);
         this.state = {
             orders: [],
+            currentItems: [],
             items: [
                 {
                     id: 1,
                     title: "Диван Комфорт",
                     img: "./img/sofa.jpg",
                     description: "Удобный трехместный диван с обивкой из экокожи. Раскладывается в двуспальную кровать.",
-                    category: "sofas",
+                    category: "sofa",
                     price: 45000
                 },
                 {
@@ -25,7 +28,7 @@ class App extends React.Component{
                     title: "Кресло Уют",
                     img: "./img/armchair.jpeg",
                     description: "Мягкое кресло с высокой спинкой и подлокотниками. Идеально для чтения и отдыха.",
-                    category: "chairs",
+                    category: "armchair",
                     price: 15000
                 },
                 {
@@ -33,7 +36,7 @@ class App extends React.Component{
                     title: "Стол Модерн",
                     img: "./img/table.jpg",
                     description: "Обеденный стол из массива дуба на 6 персон. Современный дизайн.",
-                    category: "tables",
+                    category: "table",
                     price: 28000
                 },
                 {
@@ -41,7 +44,7 @@ class App extends React.Component{
                     title: "Шкаф Классик",
                     img: "./img/cupboard.jpeg",
                     description: "Трехстворчатый шкаф с зеркалом и отделением для одежды. Классический дизайн.",
-                    category: "wardrobes",
+                    category: "cupboard",
                     price: 35000
                 },
                 {
@@ -49,20 +52,23 @@ class App extends React.Component{
                     title: "Кровать Люкс",
                     img: "./img/bed.jpeg",
                     description: "Двуспальная кровать с мягким изголовьем и ортопедическим основанием.",
-                    category: "beds",
+                    category: "bed",
                     price: 42000
                 }
             ]
         }
+        this.state.currentItems = this.state.items
         this.addToOrder = this.addToOrder.bind(this);
         this.deleteOrder = this.deleteOrder.bind(this);
+        this.chooseCategory = this.chooseCategory.bind(this);
     }
 
     render() {
         return (
             <div className="wrapper">
                 <Header orders={this.state.orders} onDelete={this.deleteOrder}/>
-                <Items items={this.state.items} onAdd={this.addToOrder}/>
+                <Category chooseCategory={this.chooseCategory}/>
+                <Items items={this.state.currentItems} onAdd={this.addToOrder}/>
                 <Footer/>
             </div>
         );
@@ -81,6 +87,16 @@ class App extends React.Component{
 
         })
         if(!isInArray) this.setState({orders: [...this.state.orders, item]});
+    }
+
+    chooseCategory(category){
+        if (category === "all"){
+            this.setState({currentItems: this.state.items});
+            return
+        }
+        this.setState({
+            currentItems: this.state.items.filter(el => el.category === category)
+        })
     }
 
 }
